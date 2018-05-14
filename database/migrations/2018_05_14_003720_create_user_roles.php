@@ -17,6 +17,23 @@ class CreateUserRoles extends Migration
             $table->increments('id');
             $table->string('label');
         });
+
+        $data = array(
+            array(
+                'id' => 1,
+                'label' => 'Admin'
+            ),
+            array(
+                'id' => 2,
+                'label' => 'Publisher'
+            ),
+            array(
+                'id' => 3,
+                'label' => 'Public User'
+            )
+        );
+        // insert sample data
+        DB::table('user_roles')->insert($data);
     }
 
     /**
