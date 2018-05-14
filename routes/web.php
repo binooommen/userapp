@@ -12,7 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('user');
+    return view('welcome');
+});
+
+Route::get('/users', function () {
+    $users = App\Users::all();
+    return view('users', compact('users'));
+});
+
+Route::get('/users/{id}', function ($id) {
+    $user = App\Users::find($id);
+    return view('showuser', compact('user'));
 });
 
 // REST API to return a list of users in JSON
