@@ -11,7 +11,3 @@ Route::post('/users', 'UsersController@store');
 //Using POST method for PUT because of Form Method Spoofing limitations in laravel
 //We can pass a hidden method if needed
 Route::post('/users/{id}', 'UsersController@update');
-
-// RESTful api's
-Route::get('/api/users', 'UsersController@list');
-Route::get('/api/users/{user}', 'UsersController@load');

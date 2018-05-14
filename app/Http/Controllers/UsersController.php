@@ -11,14 +11,17 @@ class UsersController extends Controller
         $users = Users::all();
         return view('user.index', compact('users'));
     }
+
     //shows just the one user
     public function show(Users $user) {
         return view('user.show', compact('user'));
     }
+
     // create new user view
     public function create() {
         return view('user.create');
     }
+
     // store new user view
     public function store() {
         $post = new Users;
@@ -28,6 +31,7 @@ class UsersController extends Controller
         $post->save();
         return redirect('/');
     }
+
     // update user
     public function update($id) {
         $post = Users::find($id);
@@ -37,19 +41,11 @@ class UsersController extends Controller
         $post->save();
         return redirect('/');
     }
+
     // delete user
     public function delete($id) {
         $post = Users::find($id);
         $post->delete();
         return redirect('/');
-    }
-    // api list of users
-    public function list() {
-        $users = Users::all();
-        return $users;
-    }
-    // api load user
-    public function load(Users $user) {
-        return $user;
     }
 }
