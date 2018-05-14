@@ -1,38 +1,13 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/', 'UsersController@index');
+Route::get('/users', 'UsersController@index');
+Route::get('/users/create', 'UsersController@create');
+Route::get('/users/{user}', 'UsersController@show');
+Route::get('/users/delete/{id}', 'UsersController@delete');
+Route::post('/users', 'UsersController@store');
+Route::post('/users/{id}', 'UsersController@update');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/users', function () {
-    $users = App\Users::all();
-    return view('users', compact('users'));
-});
-
-Route::get('/users/{id}', function ($id) {
-    $user = App\Users::find($id);
-    return view('showuser', compact('user'));
-});
-
-// REST API to return a list of users in JSON
-Route::get('/api/users', function () {
-    $users = DB::table('users')->get();
-    return $users;
-});
-
-// REST API to return one users in JSON
-Route::get('/api/users/{id}', function ($id) {
-    $users = DB::table('users')->find($id);
-    dd($users);
-});
+// RESTful api's
+Route::get('/api/users', 'UsersController@list');
+Route::get('/api/users/{user}', 'UsersController@load');

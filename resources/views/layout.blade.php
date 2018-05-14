@@ -12,20 +12,7 @@
     <body class="jumbotron">
 		<div>
             <h1>User App</h1>
-            <h2>List of Users</h2>
-            <li style="list-style-type: none;">
-                @foreach ($users as $user)
-                    <a href="users/{{$user->id}}" class="btn btn-primary btn-block">
-                        {{$user->username}}
-                    </a>
-                    <br>
-                @endforeach
-			</li>
-			<li style="list-style-type: none;">
-                <a href="users/{{$user->id}}" class="btn btn-success btn-block">
-                        Add a new user
-                </a>
-			</li>
+            @yield('content')
 		</div>
 	</body>
 </html>
